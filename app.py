@@ -1471,7 +1471,9 @@ def edit_income(id):
     user_id = session["user_id"]
 
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(
+    cursor_factory=psycopg2.extras.RealDictCursor
+)
 
     # ================= UPDATE =================
 
@@ -1571,43 +1573,44 @@ def edit_income(id):
 
     # ================= GET =================
 
-    try:
+   # ================= GET =================
 
-        cur.execute("""
-            SELECT
-                id,
-                title,
-                amount,
-                income_date
-            FROM income
-            WHERE id = %s
-            AND user_id = %s
-        """, (
+try:
+
+    cur.execute("""
+        SELECT
             id,
-            user_id
-        ))
+            title,
+            amount,
+            income_date AS date
+        FROM income
+        WHERE id = %s
+        AND user_id = %s
+    """, (
+        id,
+        user_id
+    ))
 
-        income = cur.fetchone()
+    income = cur.fetchone()
 
-    finally:
+finally:
 
-        cur.close()
-        conn.close()
+    cur.close()
+    conn.close()
 
-    if not income:
+if not income:
 
-        flash(
-            "Income record not found.",
-            "error"
-        )
-
-        return redirect("/income")
-
-    return render_template(
-        "edit_income.html",
-        income=income
+    flash(
+        "Income record not found.",
+        "error"
     )
 
+    return redirect("/income")
+
+return render_template(
+    "edit_income.html",
+    income=income
+)
 
 # =====================================================
 # SET MONTHLY BUDGET
