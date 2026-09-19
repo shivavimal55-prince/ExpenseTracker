@@ -1,0 +1,3007 @@
+/* =========================================================
+   EXPENSE TRACKER
+   Bootstrap 5 Compatible Custom CSS
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f4f6fb;
+    color: #172033;
+
+    min-height: 100vh;
+}
+
+
+/* Remove Bootstrap link underline where needed */
+
+a {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+/*
+   Bootstrap navbar already handles:
+   - responsive menu
+   - mobile toggler
+   - collapse
+   - spacing
+*/
+
+.navbar {
+    min-height: 62px;
+}
+
+.navbar-brand {
+    font-size: 21px;
+    letter-spacing: -0.2px;
+}
+
+.navbar .nav-link {
+    color: #d1d5db;
+    font-size: 14px;
+    font-weight: 600;
+
+    padding: 9px 12px !important;
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #ffffff;
+    background: #343a40;
+}
+
+.navbar .nav-link.active {
+    color: #ffffff;
+    background: #343a40;
+}
+
+.navbar .text-warning:hover {
+    color: #ffd54f !important;
+    background: #343a40;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+main {
+    width: 100%;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 1600px;
+
+    margin: 0 auto;
+
+    padding: 36px 52px 55px;
+}
+
+
+/* =========================================================
+   DASHBOARD HEADER
+   ========================================================= */
+
+.dashboard-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+
+    font-size: 36px;
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    color: #172033;
+}
+
+.dashboard-header p {
+    margin: 7px 0 0;
+
+    color: #64748b;
+
+    font-size: 15px;
+}
+
+.today-date {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9f2;
+
+    border-radius: 10px;
+
+    padding: 10px 15px;
+
+    color: #475569;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SUMMARY GRID
+   ========================================================= */
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   SUMMARY CARD
+   ========================================================= */
+
+.summary-card {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    min-height: 145px;
+
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e9f2;
+
+    border-radius: 16px;
+
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   SUMMARY ICON
+   ========================================================= */
+
+.summary-icon {
+    flex-shrink: 0;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 23px;
+}
+
+.income-card .summary-icon {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.expense-card .summary-icon {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.balance-card .summary-icon {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.transaction-card .summary-icon {
+    background: #f3e8ff;
+    color: #9333ea;
+}
+
+
+/* =========================================================
+   SUMMARY CONTENT
+   ========================================================= */
+
+.summary-content {
+    min-width: 0;
+}
+
+.summary-label {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 4px;
+}
+
+.summary-content h2 {
+    margin: 0;
+
+    font-size: 25px;
+    line-height: 1.25;
+
+    font-weight: 800;
+
+    color: #172033;
+
+    overflow-wrap: anywhere;
+}
+
+.summary-description {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   SECTION CARD
+   ========================================================= */
+
+.section-card {
+    background: #ffffff;
+
+    border: 1px solid #e5e9f2;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    margin-bottom: 24px;
+
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 20px;
+    line-height: 1.3;
+
+    font-weight: 750;
+}
+
+.section-heading p {
+    margin: 5px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.heading-icon {
+    color: #64748b;
+
+    font-size: 22px;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+   ========================================================= */
+
+.quick-action-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+.quick-action {
+    width: 100%;
+
+    min-height: 82px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 16px;
+
+    border: 1px solid #e5e9f2;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    color: #172033;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.quick-action:hover {
+    transform: translateY(-2px);
+
+    background: #f8fafc;
+
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.06);
+}
+
+.quick-action > i {
+    flex-shrink: 0;
+
+    font-size: 26px;
+}
+
+.quick-action strong {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.quick-action small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.expense-action > i {
+    color: #dc2626;
+}
+
+.income-action > i {
+    color: #16a34a;
+}
+
+.budget-action > i {
+    color: #2563eb;
+}
+
+.analytics-action > i {
+    color: #9333ea;
+}
+
+
+/* =========================================================
+   TWO COLUMN LAYOUT
+   ========================================================= */
+
+.dashboard-two-column {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    align-items: stretch;
+}
+
+.dashboard-two-column > .section-card {
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   BUDGET
+   ========================================================= */
+
+.budget-card {
+    min-height: 100%;
+}
+
+.budget-main {
+    padding-top: 3px;
+}
+
+.budget-amounts {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 16px;
+}
+
+.budget-amounts > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.budget-amounts span {
+    color: #64748b;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.budget-amounts strong {
+    color: #172033;
+
+    font-size: 19px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BOOTSTRAP PROGRESS OVERRIDE
+   ========================================================= */
+
+.progress {
+    height: 10px;
+
+    background: #e9eef5;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    border-radius: 999px;
+
+    background: #2563eb;
+
+    transition: width 0.5s ease;
+}
+
+.budget-progress .progress-bar {
+    background: #2563eb;
+}
+
+.savings-progress {
+    background: #16a34a;
+}
+
+.expense-progress {
+    background: #dc2626;
+}
+
+
+/* =========================================================
+   BUDGET FOOTER
+   ========================================================= */
+
+.budget-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 10px;
+
+    color: #64748b;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.text-success {
+    color: #16a34a !important;
+}
+
+.text-danger {
+    color: #dc2626 !important;
+}
+
+
+/* =========================================================
+   FINANCIAL HEALTH
+   ========================================================= */
+
+.health-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.health-item {
+    width: 100%;
+}
+
+.health-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 8px;
+}
+
+.health-label span {
+    color: #64748b;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.health-label strong {
+    color: #172033;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.health-stat {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-top: 13px;
+
+    border-top: 1px solid #edf0f4;
+}
+
+.health-stat > span {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.health-stat > strong,
+.health-stat > div {
+    text-align: right;
+}
+
+.health-stat strong {
+    color: #172033;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.health-stat small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #dc2626;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   CHARTS
+   ========================================================= */
+
+.chart-card {
+    min-height: 400px;
+}
+
+.chart-container {
+    position: relative;
+
+    width: 100%;
+
+    height: 300px;
+}
+
+.chart-small {
+    height: 280px;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.dashboard-table {
+    margin-bottom: 0;
+
+    vertical-align: middle;
+}
+
+.dashboard-table thead th {
+    padding: 13px 12px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    color: #64748b;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+
+    white-space: nowrap;
+}
+
+.dashboard-table tbody td {
+    padding: 15px 12px;
+
+    border-bottom: 1px solid #edf0f4;
+
+    color: #475569;
+
+    font-size: 14px;
+}
+
+.dashboard-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.dashboard-table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.dashboard-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+
+/* =========================================================
+   TRANSACTION TITLE
+   ========================================================= */
+
+.transaction-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 160px;
+}
+
+.transaction-title strong {
+    color: #172033;
+
+    font-size: 14px;
+
+    overflow-wrap: anywhere;
+}
+
+.transaction-icon {
+    flex-shrink: 0;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+}
+
+.expense-icon {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.income-icon {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+
+/* =========================================================
+   CATEGORY BADGE
+   ========================================================= */
+
+.category-badge {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #eff6ff;
+
+    border: 1px solid #dbeafe;
+
+    color: #2563eb;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.date-text {
+    color: #64748b;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   AMOUNTS
+   ========================================================= */
+
+.expense-amount {
+    color: #dc2626;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.income-amount {
+    color: #16a34a;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.action-buttons {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.action-btn {
+    width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 !important;
+
+    border-radius: 8px !important;
+
+    transition:
+        transform 0.15s ease,
+        background-color 0.15s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   VIEW ALL
+   ========================================================= */
+
+.view-all-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #2563eb;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+.view-all-link:hover {
+    color: #1d4ed8;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 180px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    color: #64748b;
+}
+
+.empty-state > i {
+    color: #94a3b8;
+
+    font-size: 40px;
+
+    margin-bottom: 10px;
+}
+
+.empty-state h3 {
+    margin: 0 0 6px;
+
+    color: #172033;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.empty-state p {
+    margin: 0 0 16px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   BOOTSTRAP BUTTON CUSTOMIZATION
+   ========================================================= */
+
+.btn {
+    border-radius: 9px;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: #2563eb;
+
+    border-color: #2563eb;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+
+    border-color: #1d4ed8;
+}
+
+.btn-success {
+    background: #16a34a;
+
+    border-color: #16a34a;
+}
+
+.btn-danger {
+    background: #dc2626;
+
+    border-color: #dc2626;
+}
+
+
+/* =========================================================
+   BOOTSTRAP FORM CONTROLS
+   ========================================================= */
+
+.form-control,
+.form-select {
+    min-height: 44px;
+
+    border: 1px solid #d8dee9;
+
+    border-radius: 9px;
+
+    color: #172033;
+
+    background-color: #ffffff;
+}
+
+.form-control::placeholder {
+    color: #94a3b8;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #6ea8fe;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.form-label {
+    color: #334155;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+   ========================================================= */
+
+.input-group-text {
+    min-height: 44px;
+
+    background: #f8fafc;
+
+    border-color: #d8dee9;
+
+    color: #475569;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.custom-modal {
+    border: none;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+}
+
+.custom-modal .modal-header {
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+.custom-modal .modal-title {
+    color: #172033;
+
+    font-size: 19px;
+    font-weight: 750;
+}
+
+.custom-modal .modal-title i {
+    margin-right: 6px;
+}
+
+.custom-modal .modal-header p {
+    margin: 4px 0 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.custom-modal .modal-body {
+    padding: 22px;
+}
+
+.custom-modal .modal-footer {
+    padding: 16px 22px;
+
+    border-top: 1px solid #edf0f4;
+}
+
+.custom-modal .form-group {
+    margin-bottom: 18px;
+}
+
+.custom-modal .form-group:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   BOOTSTRAP ALERT
+   ========================================================= */
+
+.alert {
+    border-radius: 10px;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   GENERAL RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .dashboard-container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quick-action-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+    .dashboard-container {
+        padding: 30px 25px 45px;
+    }
+
+    .dashboard-header {
+        align-items: flex-start;
+    }
+
+    .dashboard-header h1 {
+        font-size: 32px;
+    }
+
+    .dashboard-two-column {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+    .dashboard-two-column > .section-card {
+        margin-bottom: 24px;
+    }
+
+    .chart-card {
+        min-height: 350px;
+    }
+
+    .chart-container {
+        height: 280px;
+    }
+
+    /*
+       Bootstrap navbar collapses at lg.
+       Keep custom spacing comfortable.
+    */
+
+    .navbar .nav-link {
+        margin-top: 3px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .dashboard-container {
+        padding: 25px 18px 35px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        margin-bottom: 22px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 29px;
+    }
+
+    .today-date {
+        align-self: flex-start;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .summary-card {
+        min-height: 125px;
+
+        padding: 19px;
+    }
+
+    .summary-icon {
+        width: 48px;
+        height: 48px;
+
+        font-size: 21px;
+    }
+
+    .summary-content h2 {
+        font-size: 23px;
+    }
+
+    .section-card {
+        padding: 20px;
+
+        border-radius: 15px;
+    }
+
+    .section-heading h2 {
+        font-size: 18px;
+    }
+
+    .quick-action-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-action {
+        min-height: 75px;
+    }
+
+    .budget-amounts {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .budget-footer {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .health-stat {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+    .health-stat > strong,
+    .health-stat > div {
+        text-align: left;
+    }
+
+    .chart-card {
+        min-height: 330px;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+
+    .chart-small {
+        height: 240px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .dashboard-container {
+        padding: 20px 15px 30px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 27px;
+    }
+
+    .dashboard-header p {
+        font-size: 14px;
+    }
+
+    .section-card {
+        padding: 17px;
+
+        border-radius: 14px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+    }
+
+    .section-heading h2 {
+        font-size: 17px;
+    }
+
+    .summary-card {
+        padding: 17px;
+
+        border-radius: 14px;
+    }
+
+    .summary-content h2 {
+        font-size: 21px;
+    }
+
+    .summary-description {
+        font-size: 11px;
+    }
+
+    .chart-container {
+        height: 220px;
+    }
+
+    .chart-small {
+        height: 210px;
+    }
+
+    .dashboard-table {
+        min-width: 650px;
+    }
+
+    .table-responsive {
+        border-radius: 8px;
+    }
+
+    .action-buttons {
+        gap: 5px;
+    }
+
+    .view-all-link {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .dashboard-header h1 {
+        font-size: 24px;
+    }
+
+    .summary-card {
+        gap: 11px;
+    }
+
+    .summary-icon {
+        width: 44px;
+        height: 44px;
+
+        font-size: 19px;
+    }
+
+    .summary-content h2 {
+        font-size: 19px;
+    }
+
+    .section-card {
+        padding: 15px;
+    }
+}
+/* =====================================================
+   BOOTSTRAP SUMMARY CARDS
+===================================================== */
+
+.summary-card-bootstrap {
+    border-radius: 18px !important;
+    transition: all 0.25s ease;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.summary-card-bootstrap:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10) !important;
+}
+
+
+/* CARD TOP BORDER */
+
+.summary-card-bootstrap.income-card {
+    border-top: 4px solid #198754 !important;
+}
+
+.summary-card-bootstrap.expense-card {
+    border-top: 4px solid #dc3545 !important;
+}
+
+.summary-card-bootstrap.balance-card {
+    border-top: 4px solid #0d6efd !important;
+}
+
+.summary-card-bootstrap.transaction-card {
+    border-top: 4px solid #6f42c1 !important;
+}
+
+
+/* ICON */
+
+.summary-icon-bootstrap {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+
+    flex-shrink: 0;
+}
+
+
+/* INCOME ICON */
+
+.summary-icon-bootstrap.income-icon {
+    background: rgba(25, 135, 84, 0.12);
+    color: #198754;
+}
+
+
+/* EXPENSE ICON */
+
+.summary-icon-bootstrap.expense-icon {
+    background: rgba(220, 53, 69, 0.12);
+    color: #dc3545;
+}
+
+
+/* BALANCE ICON */
+
+.summary-icon-bootstrap.balance-icon {
+    background: rgba(13, 110, 253, 0.12);
+    color: #0d6efd;
+}
+
+
+/* TRANSACTION ICON */
+
+.summary-icon-bootstrap.transaction-icon {
+    background: rgba(111, 66, 193, 0.12);
+    color: #6f42c1;
+}
+
+
+/* AMOUNT */
+
+.summary-card-bootstrap h2 {
+    font-size: 27px;
+    letter-spacing: -0.5px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 576px) {
+
+    .summary-card-bootstrap {
+        border-radius: 15px !important;
+    }
+
+    .summary-card-bootstrap .card-body {
+        padding: 20px !important;
+    }
+
+    .summary-card-bootstrap h2 {
+        font-size: 24px;
+    }
+
+    .summary-icon-bootstrap {
+        width: 46px;
+        height: 46px;
+        font-size: 21px;
+        border-radius: 12px;
+    }
+}
+/* =====================================================
+   BOOTSTRAP QUICK ACTIONS
+===================================================== */
+
+.quick-actions-card {
+    border-radius: 18px !important;
+    background: #ffffff;
+}
+
+
+/* HEADING ICON */
+
+.quick-heading-icon {
+    font-size: 24px;
+    color: #6c757d;
+}
+
+
+/* ACTION BUTTON */
+
+.quick-action-bootstrap {
+    min-height: 92px;
+
+    padding: 18px !important;
+
+    border: 1px solid #e5e7eb !important;
+    border-radius: 14px !important;
+
+    background: #ffffff;
+
+    color: #212529 !important;
+
+    transition: all 0.25s ease;
+
+    text-decoration: none;
+}
+
+
+/* HOVER */
+
+.quick-action-bootstrap:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 22px rgba(15, 23, 42, 0.09);
+
+    color: #212529 !important;
+}
+
+
+/* TEXT */
+
+.quick-action-bootstrap strong {
+    font-size: 15px;
+}
+
+.quick-action-bootstrap small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #6c757d;
+
+    font-size: 12px;
+}
+
+
+/* ICON CONTAINER */
+
+.quick-action-icon {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+
+/* EXPENSE */
+
+.expense-action-bootstrap:hover {
+    border-color: #dc3545 !important;
+}
+
+.expense-action-icon {
+    background: rgba(220, 53, 69, 0.12);
+    color: #dc3545;
+}
+
+
+/* INCOME */
+
+.income-action-bootstrap:hover {
+    border-color: #198754 !important;
+}
+
+.income-action-icon {
+    background: rgba(25, 135, 84, 0.12);
+    color: #198754;
+}
+
+
+/* BUDGET */
+
+.budget-action-bootstrap:hover {
+    border-color: #0d6efd !important;
+}
+
+.budget-action-icon {
+    background: rgba(13, 110, 253, 0.12);
+    color: #0d6efd;
+}
+
+
+/* ANALYTICS */
+
+.analytics-action-bootstrap:hover {
+    border-color: #6f42c1 !important;
+}
+
+.analytics-action-icon {
+    background: rgba(111, 66, 193, 0.12);
+    color: #6f42c1;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 576px) {
+
+    .quick-actions-card {
+        border-radius: 15px !important;
+    }
+
+    .quick-actions-card .card-body {
+        padding: 20px !important;
+    }
+
+    .quick-action-bootstrap {
+        min-height: 80px;
+        padding: 15px !important;
+    }
+
+    .quick-action-icon {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        font-size: 19px;
+    }
+
+}
+/* =====================================================
+   MONTHLY BUDGET + FINANCIAL OVERVIEW
+===================================================== */
+
+.dashboard-section-card {
+    border-radius: 18px !important;
+    background: #ffffff;
+    transition: all 0.25s ease;
+}
+
+.dashboard-section-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 28px rgba(15, 23, 42, 0.08) !important;
+}
+
+
+/* HEADING ICON */
+
+.dashboard-heading-icon {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+.budget-heading-icon {
+    background: rgba(13, 110, 253, 0.12);
+    color: #0d6efd;
+}
+
+.health-heading-icon {
+    background: rgba(111, 66, 193, 0.12);
+    color: #6f42c1;
+}
+
+
+/* BUDGET STAT */
+
+.budget-stat-box {
+    background: #f8f9fa;
+
+    border: 1px solid #e9ecef;
+
+    border-radius: 12px;
+
+    padding: 15px 16px;
+}
+
+
+/* BUDGET PROGRESS */
+
+.budget-progress-bootstrap {
+    height: 11px !important;
+
+    border-radius: 20px;
+
+    background: #e9ecef;
+}
+
+.budget-progress-bootstrap .progress-bar {
+    border-radius: 20px;
+
+    background: #0d6efd;
+}
+
+
+/* EMPTY STATE */
+
+.empty-dashboard-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(13, 110, 253, 0.10);
+
+    color: #0d6efd;
+
+    font-size: 29px;
+}
+
+
+/* HEALTH PROGRESS */
+
+.health-progress {
+    height: 9px !important;
+
+    border-radius: 20px;
+
+    background: #e9ecef;
+}
+
+.health-progress .progress-bar {
+    border-radius: 20px;
+}
+
+
+/* SAVINGS */
+
+.savings-progress-bootstrap {
+    background: #198754;
+}
+
+
+/* EXPENSE */
+
+.expense-progress-bootstrap {
+    background: #dc3545;
+}
+
+
+/* FINANCIAL STAT */
+
+.financial-stat {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px;
+
+    border: 1px solid #e9ecef;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    transition: all 0.2s ease;
+}
+
+.financial-stat:hover {
+    background: #f8f9fa;
+}
+
+
+/* STAT ICON */
+
+.financial-stat-icon {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+}
+
+
+/* CATEGORY */
+
+.category-stat-icon {
+    background: rgba(13, 110, 253, 0.10);
+    color: #0d6efd;
+}
+
+
+/* HIGHEST */
+
+.highest-stat-icon {
+    background: rgba(220, 53, 69, 0.10);
+    color: #dc3545;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 576px) {
+
+    .dashboard-section-card {
+        border-radius: 15px !important;
+    }
+
+    .dashboard-section-card .card-body {
+        padding: 20px !important;
+    }
+
+    .dashboard-heading-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 19px;
+    }
+
+    .budget-stat-box {
+        padding: 13px;
+    }
+
+}
+/* =====================================================
+   PROFESSIONAL SUMMARY CARDS
+===================================================== */
+
+.summary-pro-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e9edf3;
+    border-radius: 18px;
+    padding: 24px;
+    min-height: 190px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+    transition: all 0.25s ease;
+    overflow: hidden;
+}
+
+/* Hover */
+
+.summary-pro-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.10);
+}
+
+
+/* Top Section */
+
+.summary-pro-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+
+/* Label */
+
+.summary-pro-label {
+    display: block;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+    margin-bottom: 10px;
+}
+
+
+/* Value */
+
+.summary-pro-value {
+    margin: 0;
+    font-size: 27px;
+    font-weight: 800;
+    color: #172033;
+    line-height: 1.2;
+}
+
+
+/* Subtitle */
+
+.summary-pro-sub {
+    display: block;
+    margin-top: 9px;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.summary-pro-sub i {
+    margin-right: 4px;
+}
+
+
+/* Icon */
+
+.summary-pro-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+}
+
+
+/* Bottom */
+
+.summary-pro-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 23px;
+    padding-top: 14px;
+
+    border-top: 1px solid #edf0f4;
+
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.summary-pro-bottom i {
+    margin-right: 4px;
+}
+
+
+/* Status */
+
+.summary-pro-status {
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   INCOME
+===================================================== */
+
+.income-pro {
+    border-top: 4px solid #198754;
+}
+
+.income-pro .summary-pro-icon {
+    background: #d1e7dd;
+    color: #198754;
+}
+
+.income-pro .summary-pro-status {
+    color: #198754;
+}
+
+
+/* =====================================================
+   EXPENSE
+===================================================== */
+
+.expense-pro {
+    border-top: 4px solid #dc3545;
+}
+
+.expense-pro .summary-pro-icon {
+    background: #f8d7da;
+    color: #dc3545;
+}
+
+.expense-pro .summary-pro-status {
+    color: #dc3545;
+}
+
+
+/* =====================================================
+   BALANCE
+===================================================== */
+
+.balance-pro {
+    border-top: 4px solid #0d6efd;
+}
+
+.balance-pro .summary-pro-icon {
+    background: #cfe2ff;
+    color: #0d6efd;
+}
+
+.balance-pro .summary-pro-status {
+    color: #0d6efd;
+}
+
+
+/* =====================================================
+   TRANSACTIONS
+===================================================== */
+
+.transaction-pro {
+    border-top: 4px solid #6f42c1;
+}
+
+.transaction-pro .summary-pro-icon {
+    background: #e2d9f3;
+    color: #6f42c1;
+}
+
+.transaction-pro .summary-pro-status {
+    color: #6f42c1;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 576px) {
+
+    .summary-pro-card {
+        padding: 20px;
+        min-height: 175px;
+    }
+
+    .summary-pro-value {
+        font-size: 24px;
+    }
+
+    .summary-pro-icon {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+        font-size: 20px;
+    }
+}
+/* =====================================================
+   📱 PROFESSIONAL MOBILE UI
+   Desktop remains unchanged
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    /* ---------- BODY ---------- */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        font-size: 14px;
+        background: #f5f7fb;
+    }
+
+
+    /* ---------- MOBILE NAVBAR ---------- */
+
+    .navbar {
+        min-height: 58px !important;
+        padding: 7px 0 !important;
+        position: sticky;
+        top: 0;
+        z-index: 1030;
+    }
+
+    .navbar .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .navbar-brand {
+        font-size: 18px !important;
+        letter-spacing: -0.3px;
+    }
+
+    .navbar-brand i {
+        font-size: 19px;
+    }
+
+    .navbar-toggler {
+        width: 42px;
+        height: 40px;
+        padding: 7px 9px;
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 10px;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 3px rgba(255,255,255,0.10);
+    }
+
+    /* Mobile menu */
+
+    .navbar-collapse {
+        margin-top: 9px;
+        padding: 8px;
+        background: #212529;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+
+    .navbar-nav {
+        gap: 3px !important;
+    }
+
+    .navbar .nav-link {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 46px;
+        padding: 11px 13px !important;
+        margin: 0 !important;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .navbar .nav-link i {
+        width: 25px;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link:active,
+    .navbar .nav-link.active {
+        background: #343a40;
+    }
+
+    .navbar .text-warning {
+        margin-top: 4px !important;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        border-radius: 0 0 10px 10px;
+        padding-top: 14px !important;
+    }
+
+
+    /* ---------- MAIN CONTAINER ---------- */
+
+    .dashboard-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 14px 32px !important;
+    }
+
+
+    /* ---------- DASHBOARD HEADER ---------- */
+
+    .dashboard-header {
+        margin-bottom: 18px !important;
+        gap: 12px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 25px !important;
+        line-height: 1.25;
+        letter-spacing: -0.5px;
+    }
+
+    .dashboard-header p {
+        margin-top: 5px;
+        font-size: 13px;
+    }
+
+    .today-date {
+        width: fit-content;
+        min-height: 38px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+
+
+    /* ---------- SUMMARY CARDS ---------- */
+
+    .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        margin-bottom: 18px;
+    }
+
+    .summary-card,
+    .summary-card-bootstrap,
+    .summary-pro-card {
+        min-height: 145px !important;
+        padding: 16px !important;
+        border-radius: 15px !important;
+    }
+
+    .summary-card {
+        gap: 10px;
+    }
+
+    .summary-pro-top {
+        gap: 8px;
+    }
+
+    .summary-icon,
+    .summary-icon-bootstrap,
+    .summary-pro-icon {
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        border-radius: 11px !important;
+        font-size: 18px !important;
+    }
+
+    .summary-label,
+    .summary-pro-label {
+        font-size: 10px !important;
+        letter-spacing: 0.6px;
+    }
+
+    .summary-content h2,
+    .summary-card-bootstrap h2,
+    .summary-pro-value {
+        font-size: 19px !important;
+        line-height: 1.25;
+        word-break: break-word;
+    }
+
+    .summary-description,
+    .summary-pro-sub {
+        font-size: 10px !important;
+        margin-top: 4px;
+    }
+
+    .summary-pro-bottom {
+        margin-top: 14px;
+        padding-top: 10px;
+        font-size: 10px;
+    }
+
+
+    /* ---------- SECTION CARDS ---------- */
+
+    .section-card,
+    .dashboard-section-card,
+    .quick-actions-card {
+        margin-bottom: 14px !important;
+        padding: 16px !important;
+        border-radius: 15px !important;
+    }
+
+    .section-heading {
+        margin-bottom: 16px;
+        gap: 10px;
+    }
+
+    .section-heading h2 {
+        font-size: 17px !important;
+    }
+
+    .section-heading p {
+        font-size: 11px;
+    }
+
+    .heading-icon {
+        font-size: 19px;
+    }
+
+
+    /* ---------- QUICK ACTIONS ---------- */
+
+    .quick-action-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 9px !important;
+    }
+
+    .quick-action,
+    .quick-action-bootstrap {
+        min-height: 78px !important;
+        padding: 12px !important;
+        border-radius: 12px !important;
+        gap: 9px;
+    }
+
+    .quick-action > i,
+    .quick-action-icon {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        font-size: 17px !important;
+        border-radius: 10px;
+    }
+
+    .quick-action strong,
+    .quick-action-bootstrap strong {
+        font-size: 12px !important;
+        line-height: 1.25;
+    }
+
+    .quick-action small,
+    .quick-action-bootstrap small {
+        font-size: 9px !important;
+        margin-top: 2px;
+    }
+
+
+    /* ---------- TWO COLUMN ---------- */
+
+    .dashboard-two-column {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+    }
+
+
+    /* ---------- BUDGET ---------- */
+
+    .budget-amounts {
+        flex-direction: row !important;
+        gap: 8px !important;
+        margin-bottom: 13px;
+    }
+
+    .budget-amounts > div {
+        min-width: 0;
+    }
+
+    .budget-amounts span {
+        font-size: 10px;
+    }
+
+    .budget-amounts strong {
+        font-size: 16px;
+    }
+
+    .budget-stat-box {
+        padding: 12px !important;
+        border-radius: 10px;
+    }
+
+    .budget-footer {
+        flex-direction: row !important;
+        align-items: center !important;
+        font-size: 10px;
+        gap: 8px;
+    }
+
+    .progress,
+    .budget-progress-bootstrap {
+        height: 8px !important;
+    }
+
+
+    /* ---------- FINANCIAL HEALTH ---------- */
+
+    .health-list {
+        gap: 13px;
+    }
+
+    .health-label {
+        margin-bottom: 6px;
+    }
+
+    .health-label span,
+    .health-label strong {
+        font-size: 11px;
+    }
+
+    .health-stat {
+        padding-top: 10px;
+    }
+
+    .health-stat > span,
+    .health-stat strong {
+        font-size: 11px;
+    }
+
+    .financial-stat {
+        padding: 11px;
+        gap: 10px;
+        border-radius: 11px;
+    }
+
+    .financial-stat-icon {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        font-size: 15px;
+    }
+
+
+    /* ---------- CHARTS ---------- */
+
+    .chart-card {
+        min-height: 280px !important;
+    }
+
+    .chart-container {
+        height: 220px !important;
+    }
+
+    .chart-small {
+        height: 200px !important;
+    }
+
+
+    /* ---------- TABLES ---------- */
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 10px;
+    }
+
+    .dashboard-table {
+        min-width: 600px;
+        font-size: 12px;
+    }
+
+    .dashboard-table thead th {
+        padding: 10px 9px;
+        font-size: 10px;
+    }
+
+    .dashboard-table tbody td {
+        padding: 11px 9px;
+        font-size: 12px;
+    }
+
+    .transaction-title {
+        min-width: 135px;
+        gap: 7px;
+    }
+
+    .transaction-title strong {
+        font-size: 12px;
+    }
+
+    .transaction-icon {
+        width: 29px;
+        height: 29px;
+        font-size: 13px;
+    }
+
+    .category-badge {
+        padding: 4px 7px;
+        font-size: 9px;
+    }
+
+    .date-text,
+    .expense-amount,
+    .income-amount {
+        font-size: 11px;
+    }
+
+
+    /* ---------- BUTTONS ---------- */
+
+    .btn {
+        min-height: 42px;
+        border-radius: 10px;
+        font-size: 13px;
+    }
+
+    .action-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+
+    /* ---------- FORMS ---------- */
+
+    .form-control,
+    .form-select,
+    .input-group-text {
+        min-height: 46px;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .form-label {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+
+    /* ---------- MODALS ---------- */
+
+    .modal-dialog {
+        margin: 10px !important;
+    }
+
+    .custom-modal {
+        border-radius: 17px !important;
+    }
+
+    .custom-modal .modal-header {
+        padding: 16px !important;
+    }
+
+    .custom-modal .modal-body {
+        padding: 17px !important;
+    }
+
+    .custom-modal .modal-footer {
+        padding: 13px 17px !important;
+        gap: 8px;
+    }
+
+    .custom-modal .modal-footer .btn {
+        flex: 1;
+    }
+
+
+    /* ---------- FLASH / TOAST ---------- */
+
+    .container.mt-3 {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .alert {
+        font-size: 12px;
+        border-radius: 10px;
+    }
+
+    .toast-container {
+        width: calc(100% - 24px) !important;
+        max-width: none !important;
+        padding: 0 !important;
+        top: 65px !important;
+        right: 12px !important;
+    }
+
+    .toast {
+        width: 100% !important;
+        border-radius: 12px !important;
+    }
+
+    .toast-body {
+        font-size: 12px;
+        padding: 12px;
+    }
+}
+
+
+/* =====================================================
+   📱 SMALL PHONE
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+    .navbar-brand {
+        font-size: 17px !important;
+    }
+
+    .dashboard-container {
+        padding-left: 11px !important;
+        padding-right: 11px !important;
+    }
+
+    .summary-grid {
+        gap: 8px !important;
+    }
+
+    .summary-card,
+    .summary-card-bootstrap,
+    .summary-pro-card {
+        padding: 13px !important;
+        min-height: 135px !important;
+    }
+
+    .summary-content h2,
+    .summary-card-bootstrap h2,
+    .summary-pro-value {
+        font-size: 17px !important;
+    }
+
+    .summary-icon,
+    .summary-icon-bootstrap,
+    .summary-pro-icon {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        font-size: 16px !important;
+    }
+
+    .quick-action,
+    .quick-action-bootstrap {
+        min-height: 72px !important;
+        padding: 10px !important;
+    }
+
+    .quick-action strong,
+    .quick-action-bootstrap strong {
+        font-size: 11px !important;
+    }
+
+    .quick-action small,
+    .quick-action-bootstrap small {
+        display: none;
+    }
+}
+/* =========================================================
+   PREMIUM MOBILE NAVBAR
+   MOBILE ONLY
+   DESKTOP = COMPLETELY UNCHANGED
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ===============================
+       MAIN HEADER
+       =============================== */
+
+    .navbar {
+        min-height: 68px !important;
+        padding: 8px 14px !important;
+
+        background: #1f2329 !important;
+
+        border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+
+        box-shadow:
+            0 4px 18px rgba(0,0,0,0.16) !important;
+
+        position: relative !important;
+        z-index: 1050 !important;
+    }
+
+    .navbar .container-fluid {
+        padding: 0 !important;
+    }
+
+
+    /* ===============================
+       LOGO / BRAND
+       =============================== */
+
+    .navbar-brand {
+        display: flex !important;
+        align-items: center !important;
+
+        gap: 10px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        color: #ffffff !important;
+
+        font-size: 20px !important;
+        font-weight: 700 !important;
+
+        letter-spacing: -0.4px !important;
+
+        white-space: nowrap !important;
+    }
+
+    .navbar-brand i {
+        width: 39px !important;
+        height: 39px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        font-size: 20px !important;
+
+        color: #ffffff !important;
+
+        background: rgba(255,255,255,0.08) !important;
+
+        border: 1px solid rgba(255,255,255,0.12) !important;
+
+        border-radius: 11px !important;
+
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.06) !important;
+    }
+
+
+    /* ===============================
+       HAMBURGER
+       =============================== */
+
+    .navbar-toggler {
+        width: 47px !important;
+        height: 47px !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        background: rgba(255,255,255,0.04) !important;
+
+        border: 1px solid rgba(255,255,255,0.14) !important;
+
+        border-radius: 12px !important;
+
+        transition: all .2s ease !important;
+    }
+
+    .navbar-toggler:hover {
+        background: rgba(255,255,255,0.08) !important;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    .navbar-toggler-icon {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
+
+    /* ===============================
+       DROPDOWN / MOBILE MENU
+       =============================== */
+
+    .navbar-collapse {
+        margin-top: 12px !important;
+
+        padding: 8px !important;
+
+        background: #242930 !important;
+
+        border: 1px solid rgba(255,255,255,0.08) !important;
+
+        border-radius: 16px !important;
+
+        box-shadow:
+            0 14px 35px rgba(0,0,0,0.28) !important;
+    }
+
+
+    /* ===============================
+       MENU GRID
+       =============================== */
+
+    .navbar-nav {
+        display: grid !important;
+
+        grid-template-columns: 1fr 1fr !important;
+
+        gap: 6px !important;
+
+        width: 100% !important;
+
+        margin: 0 !important;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+
+    /* ===============================
+       NAVIGATION BUTTON
+       =============================== */
+
+    .navbar-nav .nav-link {
+        position: relative !important;
+
+        min-height: 54px !important;
+
+        padding: 9px 11px !important;
+
+        display: flex !important;
+        align-items: center !important;
+
+        gap: 9px !important;
+
+        color: #c9ced5 !important;
+
+        background: transparent !important;
+
+        border: 1px solid transparent !important;
+
+        border-radius: 11px !important;
+
+        font-size: 14px !important;
+        font-weight: 600 !important;
+
+        transition:
+            background .18s ease,
+            color .18s ease,
+            border-color .18s ease,
+            transform .12s ease !important;
+    }
+
+    .navbar-nav .nav-link i {
+        width: 22px !important;
+        min-width: 22px !important;
+
+        text-align: center !important;
+
+        font-size: 17px !important;
+
+        color: #aeb5bd !important;
+
+        transition: color .18s ease !important;
+    }
+
+
+    /* ===============================
+       HOVER
+       =============================== */
+
+    .navbar-nav .nav-link:hover {
+        color: #ffffff !important;
+
+        background: rgba(255,255,255,0.055) !important;
+
+        border-color: rgba(255,255,255,0.06) !important;
+    }
+
+    .navbar-nav .nav-link:hover i {
+        color: #ffffff !important;
+    }
+
+
+    /* ===============================
+       ACTIVE PAGE
+       =============================== */
+
+    .navbar-nav .nav-link.active {
+        color: #ffffff !important;
+
+        background: #343a42 !important;
+
+        border-color: rgba(255,255,255,0.07) !important;
+
+        box-shadow:
+            0 3px 8px rgba(0,0,0,0.15) !important;
+    }
+
+    .navbar-nav .nav-link.active i {
+        color: #ffffff !important;
+    }
+
+
+    /* Small active indicator */
+    .navbar-nav .nav-link.active::before {
+        content: "";
+
+        position: absolute;
+
+        left: 6px;
+        top: 50%;
+
+        width: 3px;
+        height: 20px;
+
+        transform: translateY(-50%);
+
+        background: #ffffff;
+
+        border-radius: 10px;
+    }
+
+
+    /* ===============================
+       LOGOUT
+       =============================== */
+
+    .navbar-nav .logout-link {
+        color: #f4c430 !important;
+    }
+
+    .navbar-nav .logout-link i {
+        color: #f4c430 !important;
+    }
+
+    .navbar-nav .logout-link:hover {
+        color: #ffd95a !important;
+
+        background: rgba(244,196,48,0.07) !important;
+
+        border-color: rgba(244,196,48,0.08) !important;
+    }
+
+
+    /* ===============================
+       TOUCH FEEDBACK
+       =============================== */
+
+    .navbar-nav .nav-link:active {
+        transform: scale(0.98) !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .navbar {
+        min-height: 64px !important;
+        padding: 7px 11px !important;
+    }
+
+    .navbar-brand {
+        font-size: 18px !important;
+        gap: 8px !important;
+    }
+
+    .navbar-brand i {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 18px !important;
+        border-radius: 10px !important;
+    }
+
+    .navbar-toggler {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 11px !important;
+    }
+
+    .navbar-collapse {
+        margin-top: 10px !important;
+        padding: 7px !important;
+        border-radius: 14px !important;
+    }
+
+    .navbar-nav {
+        gap: 5px !important;
+    }
+
+    .navbar-nav .nav-link {
+        min-height: 48px !important;
+
+        padding: 8px 9px !important;
+
+        font-size: 13px !important;
+
+        gap: 7px !important;
+
+        border-radius: 10px !important;
+    }
+
+    .navbar-nav .nav-link i {
+        width: 20px !important;
+        min-width: 20px !important;
+        font-size: 16px !important;
+    }
+
+    .navbar-nav .nav-link.active::before {
+        left: 5px;
+        height: 18px;
+    }
+}

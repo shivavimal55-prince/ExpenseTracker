@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Settings | Expense Tracker</title>
+
+<!-- Bootstrap 5 -->
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+>
+
+<!-- Bootstrap Icons -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #172033;
+    }
+
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
+
+    .navbar {
+        min-height: 62px;
+        padding: 0 52px;
+        background: #212529;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 21px;
+        font-weight: 700;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+    }
+
+    .brand i {
+        font-size: 21px;
+    }
+
+    .brand:hover {
+        color: #ffffff;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        color: #adb5bd;
+        text-decoration: none;
+        padding: 9px 13px;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: 0.2s ease;
+    }
+
+    .nav-links a i {
+        font-size: 15px;
+    }
+
+    .nav-links a:hover {
+        color: #ffffff;
+        background: #343a40;
+    }
+
+    .nav-links a.active {
+        color: #ffffff;
+        background: #495057;
+    }
+
+    .nav-links .logout-link {
+        color: #ffc107;
+    }
+
+    .nav-links .logout-link:hover {
+        color: #ffd54f;
+        background: rgba(255, 193, 7, 0.08);
+    }
+
+    /* =====================================================
+       MAIN
+    ===================================================== */
+
+    .main {
+        width: 100%;
+        max-width: 1450px;
+        margin: 0 auto;
+        padding: 38px 52px 60px;
+    }
+
+    /* =====================================================
+       PAGE HEADER
+    ===================================================== */
+
+    .page-header {
+        margin-bottom: 30px;
+    }
+
+    .section-label {
+        color: #2563eb;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.7px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    .page-title {
+        margin: 0;
+        font-size: 38px;
+        line-height: 1.15;
+        font-weight: 800;
+        letter-spacing: -0.7px;
+        color: #172033;
+    }
+
+    .description {
+        margin: 8px 0 0;
+        color: #64748b;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* =====================================================
+       SETTINGS CARD
+    ===================================================== */
+
+    .settings-card {
+        background: #ffffff;
+        border: 1px solid #e6eaf0;
+        border-radius: 16px;
+        padding: 26px;
+        margin-bottom: 22px;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.035);
+    }
+
+    .card-heading {
+        display: flex;
+        align-items: flex-start;
+        gap: 13px;
+        margin-bottom: 23px;
+    }
+
+    .card-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        border-radius: 10px;
+        background: #eff6ff;
+        color: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 19px;
+    }
+
+    .card-heading-content h2 {
+        margin: 0;
+        font-size: 19px;
+        font-weight: 750;
+        color: #172033;
+    }
+
+    .card-heading-content p {
+        margin: 4px 0 0;
+        color: #64748b;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    /* =====================================================
+       PROFILE
+    ===================================================== */
+
+    .profile-box {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 17px;
+        margin-bottom: 25px;
+        background: #f8fafc;
+        border: 1px solid #edf0f4;
+        border-radius: 12px;
+    }
+
+    .profile-icon {
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+        border-radius: 50%;
+        background: #e8f0ff;
+        color: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        font-weight: 800;
+    }
+
+    .profile-name {
+        font-size: 18px;
+        font-weight: 750;
+        color: #172033;
+        margin-bottom: 3px;
+    }
+
+    .profile-role {
+        color: #64748b;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    /* =====================================================
+       FORM
+    ===================================================== */
+
+    .form-label {
+        color: #334155;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 7px;
+    }
+
+    .form-label i {
+        color: #64748b;
+    }
+
+    .form-control,
+    .form-select {
+        min-height: 45px;
+        border: 1px solid #d8dee8;
+        border-radius: 9px;
+        padding: 9px 13px;
+        color: #172033;
+        background: #ffffff;
+        font-size: 14px;
+        transition: 0.2s ease;
+    }
+
+    .form-control::placeholder {
+        color: #94a3b8;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #6ea8fe;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+    }
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+
+    .btn-save,
+    .btn-update {
+        min-height: 43px;
+        padding: 0 19px;
+        border-radius: 9px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .btn-save {
+        background: #2563eb;
+        border-color: #2563eb;
+    }
+
+    .btn-save:hover {
+        background: #1d4ed8;
+        border-color: #1d4ed8;
+    }
+
+    .btn-update {
+        background: #212529;
+        border-color: #212529;
+    }
+
+    .btn-update:hover {
+        background: #343a40;
+        border-color: #343a40;
+    }
+
+    /* =====================================================
+       SETTING ROWS
+    ===================================================== */
+
+    .setting-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 0;
+        border-bottom: 1px solid #edf0f4;
+    }
+
+    .setting-row:last-child {
+        border-bottom: none;
+        padding-bottom: 3px;
+    }
+
+    .setting-name {
+        color: #172033;
+        font-size: 14px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .setting-name i {
+        width: 18px;
+        color: #64748b;
+        font-size: 15px;
+    }
+
+    .setting-description {
+        color: #64748b;
+        font-size: 12.5px;
+        margin-top: 5px;
+        line-height: 1.5;
+    }
+
+    /* =====================================================
+       SWITCH
+    ===================================================== */
+
+    .form-check {
+        margin: 0;
+    }
+
+    .form-check-input {
+        width: 45px;
+        height: 23px;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .form-check-input:focus {
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+    }
+
+    /* =====================================================
+       STATUS BADGES
+    ===================================================== */
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 7px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .status-protected {
+        color: #15803d;
+        background: #dcfce7;
+    }
+
+    .status-secure {
+        color: #2563eb;
+        background: #dbeafe;
+    }
+
+    /* =====================================================
+       DANGER ZONE
+    ===================================================== */
+
+    .danger-card {
+        background: #fffafa;
+        border: 1px solid #fecaca;
+    }
+
+    .danger-card .card-icon {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+
+    .danger-title {
+        color: #dc2626 !important;
+    }
+
+    .danger-text {
+        color: #64748b;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .danger-row {
+        margin-top: 5px;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .btn-danger-outline {
+        min-height: 40px;
+        padding: 0 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1100px) {
+
+        .navbar {
+            padding: 10px 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            justify-content: flex-end;
+        }
+
+        .main {
+            padding: 30px 25px 50px;
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        .navbar {
+            padding: 12px 18px;
+        }
+
+        .brand {
+            font-size: 19px;
+        }
+
+        .nav-links {
+            width: 100%;
+            justify-content: flex-start;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .nav-links a {
+            padding: 8px 10px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .main {
+            padding: 25px 18px 40px;
+        }
+
+        .page-title {
+            font-size: 32px;
+        }
+
+        .settings-card {
+            padding: 21px;
+            border-radius: 14px;
+        }
+
+        .setting-row {
+            align-items: flex-start;
+        }
+    }
+
+    @media (max-width: 576px) {
+
+        .page-title {
+            font-size: 29px;
+        }
+
+        .description {
+            font-size: 14px;
+        }
+
+        .settings-card {
+            padding: 18px;
+        }
+
+        .card-heading {
+            gap: 10px;
+        }
+
+        .card-icon {
+            width: 39px;
+            height: 39px;
+            min-width: 39px;
+            font-size: 17px;
+        }
+
+        .card-heading-content h2 {
+            font-size: 17px;
+        }
+
+        .profile-box {
+            padding: 14px;
+        }
+
+        .profile-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            font-size: 21px;
+        }
+
+        .profile-name {
+            font-size: 16px;
+        }
+
+        .setting-row {
+            gap: 12px;
+        }
+
+        .setting-name {
+            font-size: 13.5px;
+        }
+
+        .setting-description {
+            font-size: 12px;
+        }
+
+        .form-select {
+            width: 125px !important;
+        }
+
+        .btn-save,
+        .btn-update {
+            width: 100%;
+        }
+
+        .danger-row {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .btn-danger-outline {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     TOP NAVIGATION
+===================================================== -->
+
+<nav class="navbar">
+
+    <!-- Brand -->
+
+    <a href="/" class="brand">
+
+        <i class="bi bi-wallet2 me-2"></i>
+
+        Expense Tracker
+
+    </a>
+
+
+    <!-- Navigation Links -->
+
+    <div class="nav-links">
+
+        <a href="/">
+
+            <i class="bi bi-grid-1x2-fill"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <a href="/expenses">
+
+            <i class="bi bi-receipt"></i>
+
+            Expenses
+
+        </a>
+
+
+        <a href="/income">
+
+            <i class="bi bi-cash-stack"></i>
+
+            Income
+
+        </a>
+
+
+        <a href="/analytics">
+
+            <i class="bi bi-bar-chart-fill"></i>
+
+            Analytics
+
+        </a>
+
+
+        <a href="/settings" class="active">
+
+            <i class="bi bi-gear-fill"></i>
+
+            Settings
+
+        </a>
+
+
+        <a href="/logout" class="logout-link">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-header">
+
+        <div class="section-label">
+
+            Account Management
+
+        </div>
+
+        <h1 class="page-title">
+
+            Settings
+
+        </h1>
+
+        <p class="description">
+
+            Manage your profile, security and application preferences.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PROFILE INFORMATION
+    ================================================= -->
+
+    <section class="settings-card">
+
+
+        <div class="card-heading">
+
+            <div class="card-icon">
+
+                <i class="bi bi-person-circle"></i>
+
+            </div>
+
+
+            <div class="card-heading-content">
+
+                <h2>Profile Information</h2>
+
+                <p>
+
+                    Manage your personal account information.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Profile -->
+
+        <div class="profile-box">
+
+            <div class="profile-icon">
+
+                {{ user_name[0]|upper }}
+
+            </div>
+
+
+            <div>
+
+                <div class="profile-name">
+
+                    {{ user_name }}
+
+                </div>
+
+                <div class="profile-role">
+
+                    <i class="bi bi-person-badge"></i>
+
+                    Expense Tracker User
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Profile Form -->
+
+        <form action="/update-profile" method="POST">
+
+
+            <div class="row g-3">
+
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+
+                        <i class="bi bi-person me-1"></i>
+
+                        Full Name
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        value="{{ user_name }}"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+
+                        <i class="bi bi-envelope me-1"></i>
+
+                        Email Address
+
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        value="{{ user_email }}"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn btn-primary btn-save mt-4"
+            >
+
+                <i class="bi bi-check2-circle"></i>
+
+                Save Changes
+
+            </button>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SECURITY
+    ================================================= -->
+
+    <section class="settings-card">
+
+
+        <div class="card-heading">
+
+            <div class="card-icon">
+
+                <i class="bi bi-shield-lock-fill"></i>
+
+            </div>
+
+
+            <div class="card-heading-content">
+
+                <h2>Security</h2>
+
+                <p>
+
+                    Keep your account secure by updating your password.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form action="/change-password" method="POST">
+
+
+            <div class="row g-3">
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+
+                        <i class="bi bi-key me-1"></i>
+
+                        Current Password
+
+                    </label>
+
+                    <input
+                        type="password"
+                        name="current_password"
+                        class="form-control"
+                        placeholder="Current password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+
+                        <i class="bi bi-lock me-1"></i>
+
+                        New Password
+
+                    </label>
+
+                    <input
+                        type="password"
+                        name="new_password"
+                        class="form-control"
+                        placeholder="New password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+
+                        <i class="bi bi-lock-fill me-1"></i>
+
+                        Confirm Password
+
+                    </label>
+
+                    <input
+                        type="password"
+                        name="confirm_password"
+                        class="form-control"
+                        placeholder="Confirm password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn btn-dark btn-update mt-4"
+            >
+
+                <i class="bi bi-shield-check"></i>
+
+                Update Password
+
+            </button>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- =================================================
+         APPLICATION PREFERENCES
+    ================================================= -->
+
+    <section class="settings-card">
+
+
+        <div class="card-heading">
+
+            <div class="card-icon">
+
+                <i class="bi bi-sliders"></i>
+
+            </div>
+
+
+            <div class="card-heading-content">
+
+                <h2>Application Preferences</h2>
+
+                <p>
+
+                    Customize how your Expense Tracker behaves.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Email Notifications -->
+
+        <div class="setting-row">
+
+            <div>
+
+                <div class="setting-name">
+
+                    <i class="bi bi-envelope-fill"></i>
+
+                    Email Notifications
+
+                </div>
+
+                <div class="setting-description">
+
+                    Receive notifications about your account.
+
+                </div>
+
+            </div>
+
+
+            <div class="form-check form-switch">
+
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    checked
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Expense Reminders -->
+
+        <div class="setting-row">
+
+            <div>
+
+                <div class="setting-name">
+
+                    <i class="bi bi-bell-fill"></i>
+
+                    Expense Reminders
+
+                </div>
+
+                <div class="setting-description">
+
+                    Get reminders to record your daily expenses.
+
+                </div>
+
+            </div>
+
+
+            <div class="form-check form-switch">
+
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    checked
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Monthly Summary -->
+
+        <div class="setting-row">
+
+            <div>
+
+                <div class="setting-name">
+
+                    <i class="bi bi-calendar3"></i>
+
+                    Monthly Summary
+
+                </div>
+
+                <div class="setting-description">
+
+                    Show monthly income and expense summaries.
+
+                </div>
+
+            </div>
+
+
+            <div class="form-check form-switch">
+
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    checked
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Currency -->
+
+        <div class="setting-row">
+
+            <div>
+
+                <div class="setting-name">
+
+                    <i class="bi bi-currency-rupee"></i>
+
+                    Currency
+
+                </div>
+
+                <div class="setting-description">
+
+                    Default currency used throughout the application.
+
+                </div>
+
+            </div>
+
+
+            <select
+                class="form-select"
+                style="width: 150px;"
+            >
+
+                <option selected>
+
+                    INR (₹)
+
+                </option>
+
+                <option>
+
+                    USD ($)
+
+                </option>
+
+                <option>
+
+                    EUR (€)
+
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         DATA & PRIVACY
+    ================================================= -->
+
+    <section class="settings-card">
+
+
+        <div class="card-heading">
+
+            <div class="card-icon">
+
+                <i class="bi bi-shield-check"></i>
+
+            </div>
+
+
+            <div class="card-heading-content">
+
+                <h2>Data & Privacy</h2>
+
+                <p>
+
+                    Manage your financial data and privacy.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Your Data -->
+
+        <div class="setting-row">
+
+            <div>
+
+                <div class="setting-name">
+
+                    <i class="bi bi-database-fill-lock"></i>
+
+                    Your Data
+
+                </div>
+
+                <div class="setting-description">
+
+                    Your expenses and income are stored securely in your account.
+
+                </div>
+
+            </div>
+
+
+            <span class="status-badge status-protected">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                Protected
+
+            </span>
+
+        </div>
+
+
+        <!-- Account Sessions -->
+
+        <div class="setting-row">
+
+            <div>
+
+                <div class="setting-name">
+
+                    <i class="bi bi-person-lock"></i>
+
+                    Account Sessions
+
+                </div>
+
+                <div class="setting-description">
+
+                    Your login session is protected using Flask sessions.
+
+                </div>
+
+            </div>
+
+
+            <span class="status-badge status-secure">
+
+                <i class="bi bi-shield-fill-check"></i>
+
+                Secure
+
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         DANGER ZONE
+    ================================================= -->
+
+    <section class="settings-card danger-card">
+
+
+        <div class="card-heading">
+
+            <div class="card-icon">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+            </div>
+
+
+            <div class="card-heading-content">
+
+                <h2 class="danger-title">
+
+                    Danger Zone
+
+                </h2>
+
+                <p>
+
+                    These actions can permanently affect your account.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="setting-row danger-row">
+
+            <div>
+
+                <div class="setting-name">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+
+                </div>
+
+                <div class="setting-description">
+
+                    Sign out from your current account.
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="/logout"
+                class="btn btn-outline-danger btn-danger-outline"
+            >
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>

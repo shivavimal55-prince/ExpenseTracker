@@ -1,0 +1,1566 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard | Expense Tracker
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid dashboard-container">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="dashboard-header mb-4">
+
+        <div>
+            <h1 class="fw-bold mb-1">
+                Welcome, {{ user_name }} 👋
+            </h1>
+
+            <p class="text-muted mb-0">
+                Here's your financial overview.
+            </p>
+        </div>
+
+        <div class="today-date">
+            <i class="bi bi-calendar3"></i>
+            {{ current_month }}
+        </div>
+
+    </div>
+
+
+    <!-- ================= PROFESSIONAL SUMMARY CARDS ================= -->
+
+<div class="row g-4 mb-4">
+
+    <!-- TOTAL INCOME -->
+    <div class="col-12 col-sm-6 col-xl-3">
+        <div class="summary-pro-card income-pro">
+
+            <div class="summary-pro-top">
+                <div>
+                    <span class="summary-pro-label">
+                        TOTAL INCOME
+                    </span>
+
+                    <h2 class="summary-pro-value">
+                        ₹{{ "%.2f"|format(total_income) }}
+                    </h2>
+
+                    <span class="summary-pro-sub">
+                        <i class="bi bi-arrow-up-circle-fill"></i>
+                        Money received
+                    </span>
+                </div>
+
+                <div class="summary-pro-icon">
+                    <i class="bi bi-wallet2"></i>
+                </div>
+            </div>
+
+            <div class="summary-pro-bottom">
+                <span>
+                    <i class="bi bi-graph-up-arrow"></i>
+                    Income
+                </span>
+
+                <span class="summary-pro-status">
+                    Positive
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- TOTAL EXPENSE -->
+    <div class="col-12 col-sm-6 col-xl-3">
+        <div class="summary-pro-card expense-pro">
+
+            <div class="summary-pro-top">
+                <div>
+                    <span class="summary-pro-label">
+                        TOTAL EXPENSE
+                    </span>
+
+                    <h2 class="summary-pro-value">
+                        ₹{{ "%.2f"|format(total_expense) }}
+                    </h2>
+
+                    <span class="summary-pro-sub">
+                        <i class="bi bi-arrow-down-circle-fill"></i>
+                        Money spent
+                    </span>
+                </div>
+
+                <div class="summary-pro-icon">
+                    <i class="bi bi-credit-card"></i>
+                </div>
+            </div>
+
+            <div class="summary-pro-bottom">
+                <span>
+                    <i class="bi bi-receipt"></i>
+                    Spending
+                </span>
+
+                <span class="summary-pro-status">
+                    Expense
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- BALANCE -->
+    <div class="col-12 col-sm-6 col-xl-3">
+        <div class="summary-pro-card balance-pro">
+
+            <div class="summary-pro-top">
+                <div>
+                    <span class="summary-pro-label">
+                        CURRENT BALANCE
+                    </span>
+
+                    <h2 class="summary-pro-value">
+                        ₹{{ "%.2f"|format(balance) }}
+                    </h2>
+
+                    <span class="summary-pro-sub">
+                        <i class="bi bi-wallet-fill"></i>
+                        Available balance
+                    </span>
+                </div>
+
+                <div class="summary-pro-icon">
+                    <i class="bi bi-cash-stack"></i>
+                </div>
+            </div>
+
+            <div class="summary-pro-bottom">
+                <span>
+                    <i class="bi bi-shield-check"></i>
+                    Financial status
+                </span>
+
+                <span class="summary-pro-status">
+                    Healthy
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- TRANSACTIONS -->
+    <div class="col-12 col-sm-6 col-xl-3">
+        <div class="summary-pro-card transaction-pro">
+
+            <div class="summary-pro-top">
+                <div>
+                    <span class="summary-pro-label">
+                        TRANSACTIONS
+                    </span>
+
+                    <h2 class="summary-pro-value">
+                        {{ total_transactions }}
+                    </h2>
+
+                    <span class="summary-pro-sub">
+                        <i class="bi bi-arrow-left-right"></i>
+                        Total records
+                    </span>
+                </div>
+
+                <div class="summary-pro-icon">
+                    <i class="bi bi-bar-chart-fill"></i>
+                </div>
+            </div>
+
+            <div class="summary-pro-bottom">
+                <span>
+                    <i class="bi bi-list-check"></i>
+                    Activity
+                </span>
+
+                <span class="summary-pro-status">
+                    Records
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- =====================================================
+     QUICK ACTIONS
+====================================================== -->
+
+<div class="section-card mb-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="h4 fw-bold mb-1">
+                Quick Actions
+            </h2>
+
+            <p class="text-muted mb-0">
+                Add a new financial transaction.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- QUICK ACTION BUTTONS -->
+
+    <div class="row g-3">
+
+        <!-- ADD EXPENSE -->
+
+        <div class="col-12 col-sm-6 col-lg-3">
+
+            <button
+                type="button"
+                class="btn btn-danger w-100 h-100 p-3 text-start"
+                data-bs-toggle="modal"
+                data-bs-target="#expenseModal"
+            >
+
+                <div class="d-flex align-items-center">
+
+                    <i class="bi bi-dash-circle-fill fs-3 me-3"></i>
+
+                    <div>
+
+                        <strong class="d-block">
+                            Add Expense
+                        </strong>
+
+                        <small class="d-block opacity-75">
+                            Record money spent
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- ADD INCOME -->
+
+        <div class="col-12 col-sm-6 col-lg-3">
+
+            <button
+                type="button"
+                class="btn btn-success w-100 h-100 p-3 text-start"
+                data-bs-toggle="modal"
+                data-bs-target="#incomeModal"
+            >
+
+                <div class="d-flex align-items-center">
+
+                    <i class="bi bi-plus-circle-fill fs-3 me-3"></i>
+
+                    <div>
+
+                        <strong class="d-block">
+                            Add Income
+                        </strong>
+
+                        <small class="d-block opacity-75">
+                            Record money received
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- SET BUDGET -->
+
+        <div class="col-12 col-sm-6 col-lg-3">
+
+            <button
+                type="button"
+                class="btn btn-primary w-100 h-100 p-3 text-start"
+                data-bs-toggle="modal"
+                data-bs-target="#budgetModal"
+            >
+
+                <div class="d-flex align-items-center">
+
+                    <i class="bi bi-pie-chart-fill fs-3 me-3"></i>
+
+                    <div>
+
+                        <strong class="d-block">
+                            Set Budget
+                        </strong>
+
+                        <small class="d-block opacity-75">
+                            Manage monthly budget
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- ANALYTICS -->
+
+        <div class="col-12 col-sm-6 col-lg-3">
+
+            <a
+                href="{{ url_for('analytics') }}"
+                class="btn btn-dark w-100 h-100 p-3 text-start"
+            >
+
+                <div class="d-flex align-items-center">
+
+                    <i class="bi bi-graph-up-arrow fs-3 me-3"></i>
+
+                    <div>
+
+                        <strong class="d-block">
+                            View Analytics
+                        </strong>
+
+                        <small class="d-block opacity-75">
+                            See financial insights
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+  <!-- =====================================================
+     BUDGET + FINANCIAL HEALTH
+====================================================== -->
+
+<div class="row g-4 mb-4">
+
+    <!-- =================================================
+         MONTHLY BUDGET
+    ================================================== -->
+
+    <div class="col-12 col-lg-6">
+
+        <div class="section-card h-100">
+
+            <!-- CARD HEADER -->
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+
+                    <h2 class="h4 fw-bold mb-1">
+                        Monthly Budget
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        {{ current_month }}
+                    </p>
+
+                </div>
+
+                <i class="bi bi-wallet2 fs-3 text-primary"></i>
+
+            </div>
+
+
+            <!-- BUDGET EXISTS -->
+
+            {% if monthly_budget > 0 %}
+
+                <div class="budget-main">
+
+                    <!-- AMOUNTS -->
+
+                    <div class="row g-3 mb-4">
+
+                        <div class="col-6">
+
+                            <div class="bg-light rounded-3 p-3">
+
+                                <span class="text-muted small d-block">
+                                    Spent
+                                </span>
+
+                                <strong class="fs-5 text-danger">
+                                    ₹{{ "%.2f"|format(current_month_expense) }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-6">
+
+                            <div class="bg-light rounded-3 p-3">
+
+                                <span class="text-muted small d-block">
+                                    Budget
+                                </span>
+
+                                <strong class="fs-5 text-primary">
+                                    ₹{{ "%.2f"|format(monthly_budget) }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROGRESS BAR -->
+
+                    <div class="progress"
+                         style="height: 12px;">
+
+                        <div
+                            class="progress-bar
+                            {% if budget_used_percentage >= 100 %}
+                                bg-danger
+                            {% elif budget_used_percentage >= 80 %}
+                                bg-warning
+                            {% else %}
+                                bg-primary
+                            {% endif %}"
+                            role="progressbar"
+                            style="width: {{ budget_progress_percentage }}%;"
+                            aria-valuenow="{{ budget_progress_percentage }}"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                        >
+                        </div>
+
+                    </div>
+                    {% if monthly_budget > 0 %}
+
+    {% if budget_used_percentage >= 100 %}
+        <div class="alert alert-danger mt-3 mb-0">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong>Over Budget!</strong>
+            You have exceeded your monthly budget.
+        </div>
+
+    {% elif budget_used_percentage >= 80 %}
+        <div class="alert alert-warning mt-3 mb-0">
+            <i class="bi bi-exclamation-circle-fill me-2"></i>
+            <strong>Budget Almost Reached!</strong>
+            You have used more than 80% of your budget.
+        </div>
+
+    {% else %}
+        <div class="alert alert-success mt-3 mb-0">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <strong>Budget Under Control!</strong>
+            You are within your monthly budget.
+        </div>
+    {% endif %}
+
+{% endif %}
+
+
+                    <!-- BUDGET FOOTER -->
+
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+
+                        <span class="text-muted small">
+
+                            {{ "%.1f"|format(budget_used_percentage) }}% used
+
+                        </span>
+
+
+                        <span
+                            class="small fw-semibold
+                            {% if budget_remaining < 0 %}
+                                text-danger
+                            {% else %}
+                                text-success
+                            {% endif %}"
+                        >
+
+                            {% if budget_remaining >= 0 %}
+
+                                ₹{{ "%.2f"|format(budget_remaining) }}
+                                remaining
+
+                            {% else %}
+
+                                ₹{{ "%.2f"|format(budget_remaining|abs) }}
+                                over budget
+
+                            {% endif %}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            <!-- NO BUDGET -->
+
+            {% else %}
+
+                <div class="text-center py-4">
+
+                    <div class="mb-3">
+
+                        <i class="bi bi-wallet2 display-5 text-muted"></i>
+
+                    </div>
+
+                    <h3 class="h5 fw-bold">
+                        No budget set
+                    </h3>
+
+                    <p class="text-muted mb-3">
+
+                        Set a monthly budget to track your spending.
+
+                    </p>
+
+                    <button
+    type="button"
+    class="quick-action budget-action"
+    data-bs-toggle="modal"
+    data-bs-target="#budgetModal"
+>
+    <i class="bi bi-pie-chart-fill"></i>
+
+    <div>
+        <strong>Set Budget</strong>
+        <small>Manage monthly budget</small>
+    </div>
+</button>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FINANCIAL HEALTH
+    ================================================== -->
+
+    <div class="col-12 col-lg-6">
+
+        <div class="section-card h-100">
+
+            <!-- HEADER -->
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+
+                    <h2 class="h4 fw-bold mb-1">
+                        Financial Overview
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Your current financial health
+                    </p>
+
+                </div>
+
+                <i class="bi bi-speedometer2 fs-3 text-primary"></i>
+
+            </div>
+
+
+            <!-- SAVINGS -->
+
+            <div class="mb-4">
+
+                <div class="d-flex justify-content-between mb-2">
+
+                    <span class="fw-semibold">
+                        Savings
+                    </span>
+
+                    <strong>
+                        {{ "%.1f"|format(savings_percentage) }}%
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="progress"
+                    role="progressbar"
+                    style="height: 10px;"
+                    aria-valuenow="{{ [savings_percentage, 100]|min }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                >
+
+                    <div
+                        class="progress-bar bg-success"
+                        style="width: {{ [savings_percentage, 100]|min }}%;"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXPENSE RATIO -->
+
+            <div class="mb-4">
+
+                <div class="d-flex justify-content-between mb-2">
+
+                    <span class="fw-semibold">
+                        Expense Ratio
+                    </span>
+
+                    <strong>
+                        {{ "%.1f"|format(expense_percentage) }}%
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="progress"
+                    role="progressbar"
+                    style="height: 10px;"
+                    aria-valuenow="{{ [expense_percentage, 100]|min }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                >
+
+                    <div
+                        class="progress-bar bg-danger"
+                        style="width: {{ [expense_percentage, 100]|min }}%;"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOP EXPENSE CATEGORY -->
+
+            <div class="border rounded-3 p-3 mb-3">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <span class="text-muted">
+                        Top Expense Category
+                    </span>
+
+                    <strong>
+                        {{ top_category }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- HIGHEST EXPENSE -->
+
+            <div class="border rounded-3 p-3">
+
+                <div class="d-flex justify-content-between align-items-center gap-3">
+
+                    <span class="text-muted">
+                        Highest Expense
+                    </span>
+
+                    <div class="text-end">
+
+                        <strong class="d-block">
+                            {{ highest_expense_title }}
+                        </strong>
+
+                        {% if highest_expense_amount > 0 %}
+
+                            <small class="text-danger fw-semibold">
+
+                                ₹{{ "%.2f"|format(highest_expense_amount) }}
+
+                            </small>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    
+    <!-- =====================================================
+     RECENT EXPENSES
+====================================================== -->
+
+<div class="section-card mb-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="h4 fw-bold mb-1">
+                Recent Expenses
+            </h2>
+
+            <p class="text-muted mb-0">
+                Your latest spending records
+            </p>
+        </div>
+
+        <a
+            href="{{ url_for('expenses_page') }}"
+            class="btn btn-sm btn-outline-primary"
+        >
+            View All
+            <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+
+    </div>
+
+
+    {% if expenses %}
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead class="table-light">
+
+                    <tr>
+
+                        <th>Title</th>
+
+                        <th>Category</th>
+
+                        <th>Date</th>
+
+                        <th class="text-end">Amount</th>
+
+                        <th class="text-end">Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for expense in expenses[:5] %}
+
+                        <tr>
+
+                            <!-- TITLE -->
+
+                            <td>
+
+                                <div class="d-flex align-items-center gap-2">
+
+                                    <div
+                                        class="rounded-circle bg-danger-subtle
+                                        text-danger d-flex align-items-center
+                                        justify-content-center"
+                                        style="width: 38px; height: 38px;"
+                                    >
+
+                                        <i class="bi bi-arrow-down"></i>
+
+                                    </div>
+
+                                    <strong>
+                                        {{ expense.title }}
+                                    </strong>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- CATEGORY -->
+
+                            <td>
+
+                                <span class="badge text-bg-primary">
+
+                                    <i class="bi bi-tag-fill me-1"></i>
+
+                                    {{ expense.category }}
+
+                                </span>
+
+                            </td>
+
+
+                            <!-- DATE -->
+
+                            <td>
+
+                                <span class="text-muted">
+
+                                    <i class="bi bi-calendar3 me-1"></i>
+
+                                    {{ expense.date }}
+
+                                </span>
+
+                            </td>
+
+
+                            <!-- AMOUNT -->
+
+                            <td class="text-end">
+
+                                <strong class="text-danger">
+
+                                    -₹{{ "%.2f"|format(expense.amount) }}
+
+                                </strong>
+
+                            </td>
+
+
+                            <!-- ACTION -->
+
+                            <td class="text-end">
+
+                                <div class="d-flex justify-content-end gap-2">
+
+                                    <a
+                                        href="{{ url_for('edit_expense', id=expense.id) }}"
+                                        class="btn btn-sm btn-outline-primary"
+                                        title="Edit"
+                                    >
+
+                                        <i class="bi bi-pencil"></i>
+
+                                    </a>
+
+
+                                    <a
+                                        href="{{ url_for('delete_expense', id=expense.id) }}"
+                                        class="btn btn-sm btn-outline-danger"
+                                        title="Delete"
+                                        onclick="return confirm('Are you sure you want to delete this expense?');"
+                                    >
+
+                                        <i class="bi bi-trash"></i>
+
+                                    </a>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    {% else %}
+
+        <div class="text-center py-5 text-muted">
+
+            <i class="bi bi-receipt display-5 d-block mb-3"></i>
+
+            <h3 class="h5 fw-bold text-dark">
+                No expenses yet
+            </h3>
+
+            <p>
+                Add your first expense to start tracking.
+            </p>
+
+            <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#expenseModal"
+            >
+
+                <i class="bi bi-plus-lg me-1"></i>
+
+                Add Expense
+
+            </button>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+   <!-- =====================================================
+     RECENT INCOME
+====================================================== -->
+
+<div class="section-card mb-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="h4 fw-bold mb-1">
+                Recent Income
+            </h2>
+
+            <p class="text-muted mb-0">
+                Your latest income records
+            </p>
+        </div>
+
+        <a
+            href="{{ url_for('income_page') }}"
+            class="btn btn-sm btn-outline-success"
+        >
+            View All
+            <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+
+    </div>
+
+
+    {% if incomes %}
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead class="table-light">
+
+                    <tr>
+
+                        <th>Title</th>
+
+                        <th>Date</th>
+
+                        <th class="text-end">Amount</th>
+
+                        <th class="text-end">Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for income in incomes[:5] %}
+
+                        <tr>
+
+                            <!-- TITLE -->
+
+                            <td>
+
+                                <div class="d-flex align-items-center gap-2">
+
+                                    <div
+                                        class="rounded-circle bg-success-subtle
+                                        text-success d-flex align-items-center
+                                        justify-content-center"
+                                        style="width: 38px; height: 38px;"
+                                    >
+
+                                        <i class="bi bi-arrow-up"></i>
+
+                                    </div>
+
+                                    <strong>
+                                        {{ income.title }}
+                                    </strong>
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- DATE -->
+
+                            <td>
+
+                                <span class="text-muted">
+
+                                    <i class="bi bi-calendar3 me-1"></i>
+
+                                    {{ income.date }}
+
+                                </span>
+
+                            </td>
+
+
+                            <!-- AMOUNT -->
+
+                            <td class="text-end">
+
+                                <strong class="text-success">
+
+                                    +₹{{ "%.2f"|format(income.amount) }}
+
+                                </strong>
+
+                            </td>
+
+
+                            <!-- ACTION -->
+
+                            <td class="text-end">
+
+                                <div class="d-flex justify-content-end gap-2">
+
+                                    <a
+                                        href="{{ url_for('edit_income', id=income.id) }}"
+                                        class="btn btn-sm btn-outline-primary"
+                                        title="Edit"
+                                    >
+
+                                        <i class="bi bi-pencil"></i>
+
+                                    </a>
+
+
+                                    <a
+                                        href="{{ url_for('delete_income', id=income.id) }}"
+                                        class="btn btn-sm btn-outline-danger"
+                                        title="Delete"
+                                        onclick="return confirm('Are you sure you want to delete this income?');"
+                                    >
+
+                                        <i class="bi bi-trash"></i>
+
+                                    </a>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    {% else %}
+
+        <div class="text-center py-5 text-muted">
+
+            <i class="bi bi-cash-stack display-5 d-block mb-3"></i>
+
+            <h3 class="h5 fw-bold text-dark">
+                No income yet
+            </h3>
+
+            <p>
+                Add your income to see your balance.
+            </p>
+
+            <button
+                type="button"
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#incomeModal"
+            >
+
+                <i class="bi bi-plus-lg me-1"></i>
+
+                Add Income
+
+            </button>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+<!-- ================= ADD EXPENSE MODAL ================= -->
+
+<div
+    class="modal fade"
+    id="expenseModal"
+    tabindex="-1"
+    aria-labelledby="expenseModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="expenseModalLabel">
+                    <i class="bi bi-dash-circle-fill text-danger me-2"></i>
+                    Add Expense
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+
+            <form action="{{ url_for('add_expense') }}" method="POST">
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Expense Title
+                        </label>
+
+                        <input
+                            type="text"
+                            name="title"
+                            class="form-control"
+                            placeholder="e.g. Grocery"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Amount
+                        </label>
+
+                        <div class="input-group">
+                            <span class="input-group-text">₹</span>
+
+                            <input
+                                type="number"
+                                name="amount"
+                                class="form-control"
+                                placeholder="0.00"
+                                min="0.01"
+                                max="100000000"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Category
+                        </label>
+
+                        <select
+                            name="category"
+                            class="form-select"
+                            required
+                        >
+                            <option value="">
+                                Select category
+                            </option>
+
+                            <option value="Food">Food</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Education">Education</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            name="date"
+                            id="expenseDate"
+                            class="form-control"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger"
+                    >
+                        <i class="bi bi-plus-lg me-1"></i>
+                        Add Expense
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ================= ADD INCOME MODAL ================= -->
+
+<div
+    class="modal fade"
+    id="incomeModal"
+    tabindex="-1"
+    aria-labelledby="incomeModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title fw-bold" id="incomeModalLabel">
+                    <i class="bi bi-plus-circle-fill text-success me-2"></i>
+                    Add Income
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+
+            </div>
+
+            <form action="{{ url_for('add_income') }}" method="POST">
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-semibold">
+                            Income Title
+                        </label>
+
+                        <input
+                            type="text"
+                            name="title"
+                            class="form-control"
+                            placeholder="e.g. Salary"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-semibold">
+                            Amount
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">₹</span>
+
+                            <input
+                                type="number"
+                                name="amount"
+                                class="form-control"
+                                placeholder="0.00"
+                                min="0.01"
+                                max="100000000"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-semibold">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            name="date"
+                            id="incomeDate"
+                            class="form-control"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                    >
+                        <i class="bi bi-plus-lg me-1"></i>
+                        Add Income
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ================= SET BUDGET MODAL ================= -->
+
+<div
+    class="modal fade"
+    id="budgetModal"
+    tabindex="-1"
+    aria-labelledby="budgetModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <!-- HEADER -->
+
+            <div class="modal-header">
+
+                <h5
+                    class="modal-title fw-bold"
+                    id="budgetModalLabel"
+                >
+                    <i class="bi bi-pie-chart-fill text-primary me-2"></i>
+                    Set Monthly Budget
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form action="{{ url_for('set_budget') }}" method="POST">
+
+                <div class="modal-body">
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-semibold">
+                            Monthly Budget
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+                                ₹
+                            </span>
+
+                            <input
+                                type="number"
+                                name="budget"
+                                class="form-control"
+                                placeholder="e.g. 25000"
+                                min="1"
+                                max="100000000"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="form-text">
+                            Enter the maximum amount you want to spend this month.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER -->
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        <i class="bi bi-check-lg me-1"></i>
+                        Save Budget
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+<!-- ================= BUDGET TOAST ================= -->
+
+{% if monthly_budget > 0 and budget_used_percentage >= 80 %}
+
+<div
+    class="toast-container position-fixed top-0 end-0 p-3"
+    style="z-index: 9999;"
+>
+    <div
+        id="budgetToast"
+        class="toast show border-0 shadow-lg"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+    >
+
+        <div class="toast-header">
+
+            {% if budget_used_percentage >= 100 %}
+                <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
+                <strong class="me-auto text-danger">
+                    Budget Exceeded
+                </strong>
+            {% else %}
+                <i class="bi bi-exclamation-circle-fill text-warning me-2"></i>
+                <strong class="me-auto text-warning">
+                    Budget Warning
+                </strong>
+            {% endif %}
+
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+            ></button>
+
+        </div>
+
+        <div class="toast-body">
+
+            {% if budget_used_percentage >= 100 %}
+
+                <strong>⚠️ You are over budget!</strong>
+                <br>
+                You have spent
+                <strong>₹{{ "%.2f"|format(current_month_expense) }}</strong>
+                from your
+                <strong>₹{{ "%.2f"|format(monthly_budget) }}</strong>
+                monthly budget.
+
+            {% else %}
+
+                <strong>⚠️ Budget almost reached!</strong>
+                <br>
+                You have used
+                <strong>{{ "%.1f"|format(budget_used_percentage) }}%</strong>
+                of your monthly budget.
+
+            {% endif %}
+
+        </div>
+
+    </div>
+</div>
+
+{% endif %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const budgetToast = document.getElementById("budgetToast");
+
+        if (budgetToast) {
+            setTimeout(function () {
+
+                const toast = bootstrap.Toast.getOrCreateInstance(budgetToast);
+                toast.hide();
+
+            }, 5000); // 5 seconds
+        }
+
+    });
+</script>
+{% endblock %}
