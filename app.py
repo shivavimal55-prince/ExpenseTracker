@@ -1443,6 +1443,7 @@ def income_page():
 # EDIT INCOME
 # =====================================================
 
+
 @app.route("/edit-income/<int:id>", methods=["GET", "POST"])
 def edit_income(id):
 
@@ -1452,30 +1453,21 @@ def edit_income(id):
     user_id = session["user_id"]
 
     conn = get_db_connection()
-    cur = conn.cursor(
-    cursor_factory=psycopg2.extras.RealDictCursor
-)
+    cur = conn.cursor()
 
     # ================= UPDATE =================
 
     if request.method == "POST":
 
-        title = request.form.get(
-            "title",
-            ""
-        ).strip()
+        title = request.form.get("title", "").strip()
 
         amount = get_valid_amount(
             request.form.get("amount")
         )
 
-        income_date = request.form.get(
-            "date",
-            ""
-        )
+        income_date = request.form.get("date", "")
 
         if not title or not income_date:
-
             cur.close()
             conn.close()
 
@@ -1487,7 +1479,6 @@ def edit_income(id):
             return redirect(f"/edit-income/{id}")
 
         if amount is None:
-
             cur.close()
             conn.close()
 
@@ -1536,9 +1527,11 @@ def edit_income(id):
 
             return redirect("/income")
 
-        except Exception:
+        except Exception as e:
 
             conn.rollback()
+
+            print("EDIT INCOME ERROR:", e)
 
             flash(
                 "Something went wrong while updating income.",
@@ -1548,50 +1541,56 @@ def edit_income(id):
             return redirect(f"/edit-income/{id}")
 
         finally:
-
             cur.close()
             conn.close()
 
     # ================= GET =================
 
-   # ================= GET =================
+    try:
 
-try:
-
-    cur.execute("""
-        SELECT
+        cur.execute("""
+            SELECT
+                id,
+                title,
+                amount,
+                income_date
+            FROM income
+            WHERE id = %s
+            AND user_id = %s
+        """, (
             id,
-            title,
-            amount,
-            income_date AS date
-        FROM income
-        WHERE id = %s
-        AND user_id = %s
-    """, (
-        id,
-        user_id
-    ))
+            user_id
+        ))
 
-    income = cur.fetchone()
+        row = cur.fetchone()
 
-finally:
+    finally:
 
-    cur.close()
-    conn.close()
+        cur.close()
+        conn.close()
 
-if not income:
+    if not row:
 
-    flash(
-        "Income record not found.",
-        "error"
+        flash(
+            "Income record not found.",
+            "error"
+        )
+
+        return redirect("/income")
+
+    # Convert tuple into dictionary
+    income = {
+        "id": row[0],
+        "title": row[1],
+        "amount": float(row[2]),
+        "date": str(row[3])
+    }
+
+    return render_template(
+        "edit_income.html",
+        income=income
     )
 
-    return redirect("/income")
-
-return render_template(
-    "edit_income.html",
-    income=income
-)
 
 # =====================================================
 # SET MONTHLY BUDGET
