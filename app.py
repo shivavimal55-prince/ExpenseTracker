@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date, datetime
 import psycopg2
-
+import psycopg2.extras
 
 app = Flask(__name__)
 
@@ -1115,7 +1115,7 @@ def edit_expense(id):
     user_id = session["user_id"]
 
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
     # ================= UPDATE =================
 
