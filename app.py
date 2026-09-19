@@ -1,4 +1,4 @@
-
+import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date, datetime
@@ -11,21 +11,16 @@ app = Flask(__name__)
 # SESSION SECURITY
 # =====================================================
 
-app.secret_key = "expense_tracker_secret_key_2026"
-
-
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "expense_tracker_secret_key_2026"
+)
 # =====================================================
 # DATABASE CONNECTION
 # =====================================================
 
 def get_db_connection():
-    conn = psycopg2.connect(
-        host="127.0.0.1",
-        database="expense_tracker",
-        user="postgres",
-        password="postgres123"
-    )
-    return conn
+    return psycopg2.connect(os.environ["DATABASE_URL"])
 
 
 # =====================================================
