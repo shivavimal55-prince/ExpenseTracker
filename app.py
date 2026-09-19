@@ -1268,40 +1268,26 @@ def edit_expense(id):
 @app.route("/add-income", methods=["POST"])
 def add_income():
 
+    # Login check
     if "user_id" not in session:
         return redirect("/login")
 
-    title = request.form.get(
-        "title",
-        ""
-    ).strip()
+    # Get form data
+    title = request.form.get("title", "").strip()
+    amount = get_valid_amount(request.form.get("amount"))
+    income_date = request.form.get("date", "")
 
-    amount = get_valid_amount(
-        request.form.get("amount")
-    )
-
-    income_date = request.form.get(
-        "date",
-        ""
-    )
-
+    # Validate fields
     if not title or not income_date:
-
-        flash(
-            "Please fill all income fields.",
-            "error"
-        )
-
-        return redirect("/")
+        flash("Please fill all income fields.", "error")
+        return redirect("/income")
 
     if amount is None:
-
         flash(
             "Invalid amount. Please enter a positive amount.",
             "error"
         )
-
-        return redirect("/")
+        return redirect("/income")
 
     user_id = session["user_id"]
 
@@ -1309,7 +1295,6 @@ def add_income():
     cur = conn.cursor()
 
     try:
-
         cur.execute("""
             INSERT INTO income (
                 title,
@@ -1333,7 +1318,6 @@ def add_income():
         )
 
     except Exception:
-
         conn.rollback()
 
         flash(
@@ -1342,13 +1326,10 @@ def add_income():
         )
 
     finally:
-
         cur.close()
         conn.close()
 
-    return redirect("/")
-
-
+    return redirect("/income")
 # =====================================================
 # DELETE INCOME
 # =====================================================
