@@ -426,7 +426,8 @@
 
             <!-- ================= FORM ================= -->
 
-            <form action="/edit-income/{{ income.id }}" method="POST">
+        <form action="/edit-income/{{ income['id'] }}" method="POST">
+            <input type="hidden" name="income_id" value="{{ income['id'] }}">
                 <!-- TITLE -->
 
                 <div class="mb-4">
